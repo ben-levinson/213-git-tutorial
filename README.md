@@ -9,7 +9,7 @@ There's a fair bit of terminology in git. Here are the basics:
 * Clone - Make a copy of a repo
 * Branch - The data structure of commits often resembles a tree, changes can diverge from a given node
 * Master - The default / production branch
-* fork - Create a new branch. Often 3rd parties in open source projects
+* Fork - Create a new branch. Often 3rd parties in open source projects
 * Push - Upload a commit
 * Pull - Download the most recent changes
 * Merge - Combine two branches into 1
