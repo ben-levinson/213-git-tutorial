@@ -26,7 +26,7 @@ Git uses the command line, but GitHub does have a GUI client lets you do most of
 
 ## The command line
 There's only a handful of commands you need to go going:
-
+     
 * git init - create a new (local) repo
 * git clone - Clone an existing repo
 * git add - Addgit file(s) to be watched by the repo
@@ -37,7 +37,7 @@ There's only a handful of commands you need to go going:
 * git log - Show the commit log 
 * git checkout branch_name - Switch to a different branch
 * git merge commit_number - merge two branches
-
+* git rm - remove a file from the repo
 ## Your first repo
 There's a couple of ways to go about it. You can either first create a repo online, clone it to your local machine and then add files, or you could create a local repo first and then push it to GitHub. I personally think the first way is a little easier with private repos but either is fine. 
 
