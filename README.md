@@ -15,7 +15,7 @@ There's a fair bit of terminology in git. Here are the basics:
 * Merge - Combine two branches into 1
 * Conflict - Occurs when merging, two or more people have changed the same lines
 * Stage - What files are tracked to go into the next commit
-* gitignore - File that specifies what files 
+* Gitignore - File that specifies what files 
 
 
 ### Suggestions for Using Git
