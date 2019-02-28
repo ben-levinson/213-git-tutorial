@@ -45,7 +45,7 @@ There's a couple of ways to go about it. You can either first create a repo onli
 2. Type in a name
 3. Choose public or private repo
 4. Create repository 
-
+5. Say hi
 This will take you to the repository screen. If you need to give access to someone else, go to the navigation bar at the top and hit settings. Go to collaborators and type in the other person's user name. 
 
 To get started with your repo locally on the command line, click clone or download and then use HTTPS. Copy this link.
