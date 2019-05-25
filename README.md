@@ -9,7 +9,7 @@ There's a fair bit of terminology in git. Here are the basics:
 * Clone - Make a copy of a repo
 * Branch - The data structure of commits often resembles a tree, changes can diverge from a given node
 * Master - The default / production branch
-* Fork - Create a new branch. Often 3rd parties in open source projects
+* Fork - Create a copy of a repo that can be pulled back into the original. Often 3rd parties in open source projects
 * Push - Upload a commit
 * Pull - Download the most recent changes
 * Merge - Combine two branches into 1
@@ -22,7 +22,7 @@ There's a fair bit of terminology in git. Here are the basics:
 There are a lot of online clients that make using git easy. Sooner or later (now) you'll probably hear about GitHub. There are other services, but GitHub is the largest. Using your u.northwestern.edu account, you can sign up for a GitHub student account [here](https://education.github.com/pack). That gives you a lot of stuff you may not ever use, but one thing you should use for classwork is the unlimited free repositories. Using GitHub to collaborate with your group is great, but make it easy for other groups now or in the future to plagiarize your work.
 
 ## The easy way: GitHub Desktop
-Git uses the command line, but GitHub does have a GUI client lets you do most of what you would need to do. Its good to learn the command line too, but if you're not doing anything too complex the GUI should work just fine. You can download it [here](https://desktop.github.com). More on this later, but even if you plan mostly plan on using the command line I would still suggest downloading it and logging into your github account with it. It should get everything setup easily for you to use your private repos. 
+Git uses the command line, but GitHub does have a GUI client lets you do most of what you would need to do. Its good to learn the command line too, but if you're not doing anything too complex the GUI should work just fine. You can download it [here](https://desktop.github.com). More on this later, but even if you plan mostly plan on using the command line I would still suggest downloading it and logging into your github account with it. It should get everything setup easily for you to use your private repos, and it lets you see diffs between many files pretty easily. 
 
 ## The command line
 There's only a handful of commands you need to go going:
@@ -36,6 +36,7 @@ There's only a handful of commands you need to go going:
 * git status - Show the current status of the repo
 * git log - Show the commit log 
 * git checkout branch_name - Switch to a different branch
+* git checkout -b branch_name - Create a new branch and switch to it
 * git merge commit_number - merge two branches
 
 ## Your first repo
@@ -45,7 +46,6 @@ There's a couple of ways to go about it. You can either first create a repo onli
 2. Type in a name
 3. Choose public or private repo
 4. Create repository 
-5. Say hi
 This will take you to the repository screen. If you need to give access to someone else, go to the navigation bar at the top and hit settings. Go to collaborators and type in the other person's user name. 
 
 To get started with your repo locally on the command line, click clone or download and then use HTTPS. Copy this link.
@@ -70,7 +70,7 @@ To get started with your repo locally on the command line, click clone or downlo
 
 #### Every time
 3. Create/modify your files
-4. Go back to Github desktop. In the changes menu on the left side, make sure the files you want to commit are checked. The changes will be visible in the righthand pane. 
+4. Go back to Github desktop. In the changes menu on the left side, make sure the files you want to commit are checked. The changes will be visible in the righthand pane. Having a file checked is equivalent to using git add for the file. 
 5. Type a commit message and commit to master or your branch
 6. Click the push button in the top middle. 
 7. Click it again to refresh, and it will change to pull if there is a commit to pull.
