@@ -110,3 +110,35 @@ There's a lot of other things in git. But that is really about all you need for 
 2. Remember to actually push your commits. Others won't see your changes if you don't.
 3. When you're working with other people, remember to pull before you start working. It'll keep your code updated and you won't need to deal with nearly as many merge conflicts.
 4. For malloc lab in particular, you may want to leave your currently (mostly) functioning code alone. Create a new branch to work on major overhauls/changes to your code. That way you at least have a functioning version to hand in without having to undo a bunch of code that doesn't work. 
+
+## Accessing your private repos on the Wilkinson Servers
+Getting access to your private repos on the servers working is a little bit more involved. Here's how you do it. You only need to do sections 1-3 once.
+### 1. Creating an ssh key
+1. Log into a wilkinson machine (by ssh is fine.)
+2. Run the following command, replacing you_name@example.com with the email address you use for Github:
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+3. Enter a name for the ssh key, the default id_rsa is fine unless you already have one with that name.
+4. Enter a password for the ssh key. You can just type enter if you don't want to have a password.
+5. Now `cd .ssh` and `ls`
+6. You should have at least 2 files there: id_rsa and id_rsa.pub. id_rsa is your private key and id_rsa.pub is your public key. 
+### 2. Adding the private key to the ssh-agent
+1. Run the command `eval "$(ssh-agent -s)"`
+2. Add your private key to the agent by running the command `ssh-add ~/.ssh/id_rsa`
+### 3. Add your public key to your Github account
+1. Copy the contents of id_rsa.pub
+2. Log into your Github account
+3. At the top right-hand corner, click on your profile photo.
+4. Click settings
+5. On the left-hand side, click SSH and GPG keys
+6. Click new ssh key
+7. Enter a name for your key
+8. Then paste the key into the key field
+9. Click add ssh key
+10. You may need to re-enter your github password
+### Accessing your private repo
+1. To clone your private repo, navigate to its page on Github and click the button that says clone or download. 
+2. If it says Clone with HTTPS, click the button on the right that says use SSH.
+3. Once it says Clone with SSH, copy the content of the text field.
+4. On your terminal, navigate to the directory where you want the repo to live.
+5. Type `git clone` and paste. Then hit enter. This will clone the private repo.
+6. Now you have your private repo on the server and you can do anything you'd like.
