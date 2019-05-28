@@ -9,7 +9,7 @@ There's a fair bit of terminology in git. Here are the basics:
 * Clone - Make a copy of a repo
 * Branch - The data structure of commits often resembles a tree, changes can diverge from a given node
 * Master - The default / production branch
-* Fork - Create a new branch. Often 3rd parties in open source projects
+* Fork - Create a copy of a repo that can be pulled back into the original. Often 3rd parties in open source projects
 * Push - Upload a commit
 * Pull - Download the most recent changes
 * Merge - Combine two branches into 1
@@ -22,7 +22,7 @@ There's a fair bit of terminology in git. Here are the basics:
 There are a lot of online clients that make using git easy. Sooner or later (now) you'll probably hear about GitHub. There are other services, but GitHub is the largest. Using your u.northwestern.edu account, you can sign up for a GitHub student account [here](https://education.github.com/pack). That gives you a lot of stuff you may not ever use, but one thing you should use for classwork is the unlimited free repositories. Using GitHub to collaborate with your group is great, but make it easy for other groups now or in the future to plagiarize your work.
 
 ## The easy way: GitHub Desktop
-Git uses the command line, but GitHub does have a GUI client lets you do most of what you would need to do. Its good to learn the command line too, but if you're not doing anything too complex the GUI should work just fine. You can download it [here](https://desktop.github.com). More on this later, but even if you plan mostly plan on using the command line I would still suggest downloading it and logging into your github account with it. It should get everything setup easily for you to use your private repos. 
+Git uses the command line, but GitHub does have a GUI client lets you do most of what you would need to do. Its good to learn the command line too, but if you're not doing anything too complex the GUI should work just fine. You can download it [here](https://desktop.github.com). More on this later, but even if you plan mostly plan on using the command line I would still suggest downloading it and logging into your github account with it. It should get everything setup easily for you to use your private repos, and it lets you see diffs between many files pretty easily. 
 
 ## The command line
 There's only a handful of commands you need to go going:
@@ -36,6 +36,7 @@ There's only a handful of commands you need to go going:
 * git status - Show the current status of the repo
 * git log - Show the commit log 
 * git checkout branch_name - Switch to a different branch
+* git checkout -b branch_name - Create a new branch and switch to it
 * git merge commit_number - merge two branches
 * git rm - remove a file from the repo
 ## Your first repo
@@ -45,7 +46,6 @@ There's a couple of ways to go about it. You can either first create a repo onli
 2. Type in a name
 3. Choose public or private repo
 4. Create repository 
-
 This will take you to the repository screen. If you need to give access to someone else, go to the navigation bar at the top and hit settings. Go to collaborators and type in the other person's user name. 
 
 To get started with your repo locally on the command line, click clone or download and then use HTTPS. Copy this link.
@@ -70,7 +70,7 @@ To get started with your repo locally on the command line, click clone or downlo
 
 #### Every time
 3. Create/modify your files
-4. Go back to Github desktop. In the changes menu on the left side, make sure the files you want to commit are checked. The changes will be visible in the righthand pane. 
+4. Go back to Github desktop. In the changes menu on the left side, make sure the files you want to commit are checked. The changes will be visible in the righthand pane. Having a file checked is equivalent to using git add for the file. 
 5. Type a commit message and commit to master or your branch
 6. Click the push button in the top middle. 
 7. Click it again to refresh, and it will change to pull if there is a commit to pull.
@@ -110,3 +110,35 @@ There's a lot of other things in git. But that is really about all you need for 
 2. Remember to actually push your commits. Others won't see your changes if you don't.
 3. When you're working with other people, remember to pull before you start working. It'll keep your code updated and you won't need to deal with nearly as many merge conflicts.
 4. For malloc lab in particular, you may want to leave your currently (mostly) functioning code alone. Create a new branch to work on major overhauls/changes to your code. That way you at least have a functioning version to hand in without having to undo a bunch of code that doesn't work. 
+
+## Accessing your private repos on the Wilkinson Servers
+Getting access to your private repos on the servers working is a little bit more involved. Here's how you do it. You only need to do sections 1-3 once.
+### 1. Creating an ssh key
+1. Log into a wilkinson machine (by ssh is fine.)
+2. Run the following command, replacing you_name@example.com with the email address you use for Github:
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+3. Enter a name for the ssh key, the default id_rsa is fine unless you already have one with that name.
+4. Enter a password for the ssh key. You can just type enter if you don't want to have a password.
+5. Now `cd .ssh` and `ls`
+6. You should have at least 2 files there: id_rsa and id_rsa.pub. id_rsa is your private key and id_rsa.pub is your public key. 
+### 2. Adding the private key to the ssh-agent
+1. Run the command `eval "$(ssh-agent -s)"`
+2. Add your private key to the agent by running the command `ssh-add ~/.ssh/id_rsa`
+### 3. Add your public key to your Github account
+1. Copy the contents of id_rsa.pub
+2. Log into your Github account
+3. At the top right-hand corner, click on your profile photo.
+4. Click settings
+5. On the left-hand side, click SSH and GPG keys
+6. Click new ssh key
+7. Enter a name for your key
+8. Then paste the key into the key field
+9. Click add ssh key
+10. You may need to re-enter your github password
+### Accessing your private repo
+1. To clone your private repo, navigate to its page on Github and click the button that says clone or download. 
+2. If it says Clone with HTTPS, click the button on the right that says use SSH.
+3. Once it says Clone with SSH, copy the content of the text field.
+4. On your terminal, navigate to the directory where you want the repo to live.
+5. Type `git clone` and paste. Then hit enter. This will clone the private repo.
+6. Now you have your private repo on the server and you can do anything you'd like.
